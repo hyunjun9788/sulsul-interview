@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { HeaderNav } from '@/widgets/headerNav';
 import '../src/app/globals.css';
 
 const pretendard = localFont({
@@ -19,7 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable}`}>{children}</body>
+      <body className={`${pretendard.variable}`}>
+        {children}
+        <HeaderNav />
+      </body>
     </html>
   );
 }
