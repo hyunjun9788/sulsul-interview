@@ -1,3 +1,3 @@
-export const ArchivePage = () => {
+export default function ArchivePage() {
   return <div></div>;
-};
+}
