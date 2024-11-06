@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+
 import { HeaderNav } from '@/widgets/headerNav';
+
 import '../src/app/globals.css';
 
 const pretendard = localFont({
