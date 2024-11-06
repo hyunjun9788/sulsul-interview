@@ -6,17 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "husky install",
+    "prepare": "husky install",
     "format": "prettier --cache --write .",
-    "lint": "eslint --cache ."
+    "lint": "eslint --cache .",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --cache --fix",
-      "prettier --cache --write"
-    ],
-    "*.{md,json}": [
-      "prettier --cache --write"
+    "**/*.{ts,tsx}": [
+      "eslint --fix"
     ]
   },
   "dependencies": {
