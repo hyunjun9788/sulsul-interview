@@ -1,3 +1,5 @@
+'use client';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 import ChallengeSection from '../../../public/images/challenge-section.png';
@@ -10,19 +12,23 @@ import Lv5Gray from '../../../public/images/Lv.5-gray.svg';
 import Lv6Color from '../../../public/images/Lv.6-color.svg';
 import Lv6Gray from '../../../public/images/Lv.6-gray.svg';
 
-const LeftLvImage = [
-  // Lv2Color,
-  Lv2Gray,
-  // Lv3Color,
-  Lv3Gray,
+const Lv_IMAGE = [
+  { color: Lv2Color, gray: Lv2Gray },
+  { color: Lv3Color, gray: Lv3Gray },
+  { color: Lv5Color, gray: Lv5Gray },
+  { color: Lv6Color, gray: Lv6Gray },
 ];
-const RightLvImage = [
-  // Lv5Color,
-  Lv5Gray,
-  // Lv6Color,
-  Lv6Gray,
-];
+
 export const Challenge = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 1200);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="relative flex h-[874px] flex-col items-center bg-blue-100">
       <div className="mt-[100px] flex flex-col items-center ">
@@ -37,21 +43,31 @@ export const Challenge = () => {
         </button>
       </div>
       <Image
-        className="absolute bottom-0"
+        className="absolute bottom-0 z-[99]"
         width={580}
         height={522}
         src={ChallengeSection}
         alt="백문백답 섹션 이미지"
       />
-      <div className="absolute top-[594px] flex gap-[524px]">
-        <div className="flex">
-          {LeftLvImage.map((v, i) => (
-            <Image key={i} src={v} width={160} alt="lv 이미지" />
+      <div className="absolute top-[594px] z-50 flex gap-[524px]">
+        <div className="flex gap-[18px]">
+          {Lv_IMAGE.slice(0, 2).map((v, i) => (
+            <Image
+              key={i}
+              src={i === activeIndex ? v.color : v.gray}
+              width={160}
+              alt="lv 이미지"
+            />
           ))}
         </div>
-        <div className="flex">
-          {RightLvImage.map((v, i) => (
-            <Image key={i} src={v} width={160} alt="lv 이미지" />
+        <div className="flex gap-[18px]">
+          {Lv_IMAGE.slice(2, 4).map((v, i) => (
+            <Image
+              key={i + 2}
+              src={i + 2 === activeIndex ? v.color : v.gray}
+              width={160}
+              alt="lv 이미지"
+            />
           ))}
         </div>
       </div>
