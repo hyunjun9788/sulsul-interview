@@ -35,7 +35,7 @@ export const Review = () => {
       ref={containerRef}
       className="flex h-[757px] flex-col items-center justify-center gap-[80px] bg-[#F6F7FB]"
     >
-      <div className="text-center text-[42px] font-bold">
+      <div className="text-center text-[42px] font-bold leading-[54px]">
         <h1>취뽀생들이</h1>
         <h1>술술을 선택한 이유</h1>
       </div>
