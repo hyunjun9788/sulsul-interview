@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html className={`${pretendard.variable}`} lang="en">
-      <body>
+      <body className="scrollbar-hide">
         {children}
         <HeaderNav />
       </body>
