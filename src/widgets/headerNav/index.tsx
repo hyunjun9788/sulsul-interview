@@ -9,7 +9,9 @@ export const HeaderNav = () => {
       <div className="container">
         <nav className="flex h-full items-center justify-between">
           <div className="flex items-center gap-[46px]">
-            <Image width={92} height={22} src={Logo} alt="로고" />
+            <Link href={'/'} className="relative h-[22px] w-[92px]">
+              <Image fill src={Logo} alt="로고" />
+            </Link>
             <div className="flex items-center gap-[40px] font-medium">
               <Link href="/question" className="">
                 면접질문 예측
