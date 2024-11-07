@@ -6,7 +6,7 @@ export const Title = () => {
   return (
     <div className="relative flex h-[1270px] justify-center">
       <div className="absolute top-0 h-[935px] w-full">
-        <Image src={HeroImage} fill alt="배경 이미지" />
+        <Image src={HeroImage} priority fill alt="배경 이미지" />
       </div>
       <div className="z-[99] mt-[120px] flex h-[935px] flex-col items-center gap-2">
         <h1 className="text-center text-[42px] font-bold leading-[52px] text-white">
