@@ -1,5 +1,6 @@
 import { Challenge } from '@/widgets/landing/Challenge';
 import { Feedback } from '@/widgets/landing/Feedback';
+import { FooterMenu } from '@/widgets/landing/FooterMenu';
 import { Overview } from '@/widgets/landing/Overview';
 import { Question } from '@/widgets/landing/Question';
 import { Review } from '@/widgets/landing/Review';
@@ -14,6 +15,7 @@ export default async function Home() {
       <Review />
       <Question />
       <Feedback />
+      <FooterMenu />
     </main>
   );
 }
