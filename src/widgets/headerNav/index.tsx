@@ -11,8 +11,9 @@ import { gsap, ScrollTrigger, useGSAP } from '../../shared/utils/gsap';
 export const HeaderNav = () => {
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
-    if (pathname === '/') {
+    if (pathname === '/' && containerRef.current) {
       ScrollTrigger.create({
         trigger: containerRef.current,
         start: '0 start',
@@ -24,6 +25,7 @@ export const HeaderNav = () => {
       });
     }
   }, [pathname]);
+
   return (
     <div
       className="fixed top-0 z-[999] flex h-[60px] w-full justify-center bg-transparent"
