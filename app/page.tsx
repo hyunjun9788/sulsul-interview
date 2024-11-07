@@ -1,4 +1,5 @@
 import { Challenge } from '@/widgets/landing/Challenge';
+import { Feedback } from '@/widgets/landing/Feedback';
 import { Overview } from '@/widgets/landing/Overview';
 import { Question } from '@/widgets/landing/Question';
 import { Review } from '@/widgets/landing/Review';
@@ -12,6 +13,7 @@ export default async function Home() {
       <Challenge />
       <Review />
       <Question />
+      <Feedback />
     </main>
   );
 }
