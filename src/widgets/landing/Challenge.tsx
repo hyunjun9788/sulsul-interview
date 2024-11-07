@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import ChallengeSection from '../../../public/images/challenge-section.png';
 import Lv2Color from '../../../public/images/Lv.2-color.svg';
@@ -38,9 +39,11 @@ export const Challenge = () => {
         <h1 className="text-center text-6xl font-bold text-blue-500">
           단골 기출문제 완벽 대비
         </h1>
-        <button className="mt-8 h-[52px] w-[215px] rounded-[30px] bg-blue-500 text-[15px] font-semibold text-white transition-colors hover:bg-blue-300">
-          면접 기출문제 풀기
-        </button>
+        <Link href={'/exam'}>
+          <button className="mt-8 h-[52px] w-[215px] rounded-[30px] bg-blue-500 text-[15px] font-semibold text-white transition-colors hover:bg-blue-300">
+            면접 기출문제 풀기
+          </button>
+        </Link>
       </div>
       <Image
         className="absolute bottom-0 z-[99]"
