@@ -1,6 +1,4 @@
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
+import { Challenge } from '@/widgets/landing/Challenge';
 import { Overview } from '@/widgets/landing/Overview';
 import { Title } from '@/widgets/landing/Title';
 
@@ -9,6 +7,7 @@ export default async function Home() {
     <main>
       <Title />
       <Overview />
+      <Challenge />
     </main>
   );
 }

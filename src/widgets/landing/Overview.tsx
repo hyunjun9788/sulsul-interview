@@ -1,5 +1,5 @@
 'use client';
-import { forwardRef, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { gsap, ScrollTrigger, useGSAP } from '../../shared/utils/gsap';
 import { StepList } from './StepList';
