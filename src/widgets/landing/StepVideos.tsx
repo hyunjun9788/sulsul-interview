@@ -47,10 +47,10 @@ export const StepVideos = ({ videoState, activeStep }: StepVideosProps) => {
       playsInline
       controls={false}
       src={v}
-    ></ForwardedRefVideo>
+    />
   ));
 };
 const ForwardedRefVideo = forwardRef<HTMLVideoElement, VideoProps>(
-  (props, ref) => <Video videoRef={ref} {...props} />
+  (props, ref) => <Video ref={ref} {...props} />
 );
 ForwardedRefVideo.displayName = 'ForwardedRefVideo';
