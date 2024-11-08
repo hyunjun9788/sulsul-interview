@@ -3,21 +3,11 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import ChallengeSection from '../../../public/images/challenge-section.png';
-import Lv2Color from '../../../public/images/Lv.2-color.svg';
-import Lv2Gray from '../../../public/images/Lv.2-gray.svg';
-import Lv3Color from '../../../public/images/Lv.3-color.svg';
-import Lv3Gray from '../../../public/images/Lv.3-gray.svg';
-import Lv5Color from '../../../public/images/Lv.5-color.svg';
-import Lv5Gray from '../../../public/images/Lv.5-gray.svg';
-import Lv6Color from '../../../public/images/Lv.6-color.svg';
-import Lv6Gray from '../../../public/images/Lv.6-gray.svg';
-
 const Lv_IMAGE = [
-  { color: Lv2Color, gray: Lv2Gray },
-  { color: Lv3Color, gray: Lv3Gray },
-  { color: Lv5Color, gray: Lv5Gray },
-  { color: Lv6Color, gray: Lv6Gray },
+  { color: '/images/Lv.2-color.svg', gray: '/images/Lv.2-gray.svg' },
+  { color: '/images/Lv.2-gray.svg', gray: '/images/Lv.3-gray.svg' },
+  { color: '/images/Lv.5-color.svg', gray: '/images/Lv.5-gray.svg' },
+  { color: '/images/Lv.6-color.svg', gray: '/images/Lv.6-gray.svg' },
 ];
 
 export const Challenge = () => {
@@ -49,7 +39,7 @@ export const Challenge = () => {
         className="absolute bottom-0 z-[99]"
         width={580}
         height={522}
-        src={ChallengeSection}
+        src="/images/challenge-section.png"
         alt="백문백답 섹션 이미지"
       />
       <div className="absolute top-[594px] z-50 flex gap-[524px]">
@@ -59,6 +49,7 @@ export const Challenge = () => {
               key={i}
               src={i === activeIndex ? v.color : v.gray}
               width={160}
+              height={160}
               alt="lv 이미지"
             />
           ))}
@@ -69,6 +60,7 @@ export const Challenge = () => {
               key={i + 2}
               src={i + 2 === activeIndex ? v.color : v.gray}
               width={160}
+              height={160}
               alt="lv 이미지"
             />
           ))}

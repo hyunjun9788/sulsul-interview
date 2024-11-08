@@ -24,7 +24,7 @@ export const Feedback = () => {
             술술, 이용해보셨나요?
           </h1>
           <h4 className="flex text-[20px] font-bold text-white">
-            피드백 남기고 커피 쿠폰 받기{' '}
+            피드백 남기고 커피 쿠폰 받기
             <Image alt="icon" src={ArrowIcon} width={20} height={20} />
           </h4>
         </div>

@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import HeaderLoginDialog from '../../../public/images/header-login-dialog.svg';
-import Logo from '../../../public/images/sul-logo.png';
 import { gsap, ScrollTrigger, useGSAP } from '../../shared/utils/gsap';
 
 export const HeaderNav = () => {
@@ -35,12 +33,10 @@ export const HeaderNav = () => {
         <nav className="flex h-full items-center justify-between">
           <div className="flex items-center gap-[46px]">
             <Link href={'/'} className="relative h-[22px] w-[92px]">
-              <Image fill src={Logo} alt="로고" />
+              <Image fill src="/images/sul-logo.png" alt="로고" />
             </Link>
             <div className="flex items-center gap-[40px] font-medium">
-              <Link href="/question" className="">
-                면접질문 예측
-              </Link>
+              <Link href="/question">면접질문 예측</Link>
               <Link href="">기출문제</Link>
               <Link href="">실전연습</Link>
               <Link href="">아카이브</Link>
@@ -53,7 +49,7 @@ export const HeaderNav = () => {
             className="absolute right-1 top-14 animate-custom-bounce"
             width={143}
             height={44}
-            src={HeaderLoginDialog}
+            src="images/header-login-dialog.svg"
             alt="로그인 아이콘"
           />
         </nav>
