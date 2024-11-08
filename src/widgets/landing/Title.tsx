@@ -1,12 +1,20 @@
+'use client';
+
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import HeroImage from '../../../public/images/hero.png';
+const Video = dynamic(
+  () => import('../../shared/ui/videos').then((mod) => mod.Video),
+  {
+    ssr: false,
+  }
+);
 
 export const Title = () => {
   return (
     <div className="relative flex h-[1270px] justify-center">
       <div className="absolute top-0 h-[935px] w-full">
-        <Image src={HeroImage} priority fill alt="배경 이미지" />
+        <Image src="/images/hero.png" priority fill alt="배경 이미지" />
       </div>
       <div className="z-[99] mt-[120px] flex h-[935px] flex-col items-center gap-2">
         <h1 className="text-center text-[42px] font-bold leading-[52px] text-white">
@@ -20,17 +28,14 @@ export const Title = () => {
         <button className="mt-8 rounded-[30px] bg-gray-800 px-[41.5px] py-[13px] text-[16px] font-bold text-white transition-colors hover:bg-gray-700">
           내 면접질문 예측하기
         </button>
-        <video
+        <Video
+          hero={true}
           className="z-[999] mb-[100px] mt-[30px] rounded-[30px] drop-shadow-hero"
-          width={1200}
-          height={678}
-          muted
-          loop
+          src="/videos/hero.mp4"
           autoPlay
-          playsInline
-          controls={false}
-          src={require('../../../public/videos/hero.mp4')}
-        ></video>
+          loop
+          muted
+        />
       </div>
     </div>
   );
