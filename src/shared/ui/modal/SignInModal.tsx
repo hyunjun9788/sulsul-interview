@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import { getSession, signIn, signOut } from 'next-auth/react';
 
 interface SignInProps {
   onClose: () => void;
 }
+
 export const SignInModal = ({ onClose }: SignInProps) => {
   return (
     <>
@@ -28,7 +30,10 @@ export const SignInModal = ({ onClose }: SignInProps) => {
           />
         </div>
         <div className="mt-[30px] flex flex-col gap-2">
-          <button className="flex h-[52px] w-[340px] items-center justify-center gap-4 rounded-[26px] bg-[#fee500] font-bold hover:bg-[#fee500]/70 active:bg-[#fee500]/80">
+          <button
+            className="flex h-[52px] w-[340px] items-center justify-center gap-4 rounded-[26px] bg-[#fee500] font-bold hover:bg-[#fee500]/70 active:bg-[#fee500]/80"
+            onClick={() => signIn('kakao')}
+          >
             <Image
               width={24}
               height={24}
@@ -37,7 +42,10 @@ export const SignInModal = ({ onClose }: SignInProps) => {
             />
             <p>카카오로 3초만에 시작하기</p>
           </button>
-          <button className="flex h-[52px] w-[340px] items-center justify-center gap-4 rounded-[26px] border border-gray-300 bg-white font-bold hover:bg-gray-100 active:bg-gray-50">
+          <button
+            className="flex h-[52px] w-[340px] items-center justify-center gap-4 rounded-[26px] border border-gray-300 bg-white font-bold hover:bg-gray-100 active:bg-gray-50"
+            onClick={() => signIn('google')}
+          >
             <Image
               width={24}
               height={24}
