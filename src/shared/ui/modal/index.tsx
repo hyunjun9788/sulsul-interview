@@ -1,11 +1,16 @@
+import { HTMLAttributes } from 'react';
 import Image from 'next/image';
 
-interface ModalProps {
+import { cn } from '@/shared/utils/style';
+
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   onClose: () => void;
+  className?: React.ComponentProps<'div'>['className'];
   children: JSX.Element;
 }
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+
+export const Modal = ({ isOpen, onClose, className, children }: ModalProps) => {
   if (!isOpen) return null;
   return (
     <div
@@ -14,16 +19,11 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="relative h-[524px] w-[432px] rounded-md bg-white p-5"
+        className={cn(
+          'relative h-[524px] w-[432px] rounded-md bg-white p-5',
+          className
+        )}
       >
-        <button className="absolute right-8 top-8">
-          <Image
-            width={24}
-            height={24}
-            src="/icons/icon-close-L.svg"
-            alt="닫기 버튼"
-          />
-        </button>
         {children}
       </div>
     </div>
