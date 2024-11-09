@@ -6,7 +6,7 @@ import { Question } from '@/widgets/landing/Question';
 import { Review } from '@/widgets/landing/Review';
 import { Title } from '@/widgets/landing/Title';
 
-export default async function Home() {
+const Home = async () => {
   return (
     <main>
       <Title />
@@ -18,4 +18,6 @@ export default async function Home() {
       <FooterMenu />
     </main>
   );
-}
+};
+
+export default Home;

@@ -15,11 +15,11 @@ export const metadata: Metadata = {
   description: '',
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html className={`${pretendard.variable}`} lang="en">
       <body className="scrollbar-hide">
@@ -28,4 +28,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

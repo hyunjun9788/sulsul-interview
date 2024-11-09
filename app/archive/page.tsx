@@ -1,3 +1,4 @@
-export default function ArchivePage() {
+const ArchivePage = () => {
   return <div></div>;
-}
+};
+export default ArchivePage;

@@ -1,3 +1,4 @@
-export default function QuestionPage() {
+const QuestionPage = () => {
   return <div></div>;
-}
+};
+export default QuestionPage;
