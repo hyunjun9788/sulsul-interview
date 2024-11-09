@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 
 import { HeaderNav } from '@/widgets/headerNav';
 
+import { Providers } from './providers';
+
 import '../src/app/globals.css';
 
 const pretendard = localFont({
@@ -23,8 +25,10 @@ const RootLayout = ({
   return (
     <html className={`${pretendard.variable}`} lang="en">
       <body className="scrollbar-hide">
-        {children}
-        <HeaderNav />
+        <Providers>
+          {children}
+          <HeaderNav />
+        </Providers>
       </body>
     </html>
   );
