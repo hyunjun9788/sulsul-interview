@@ -18,6 +18,13 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: '*',
+      },
+    ],
+  },
 };
 
 module.exports = withVideos(nextConfig);

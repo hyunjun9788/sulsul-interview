@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 import { Modal } from '@/shared/ui/modal';
 import { SignInModal } from '@/shared/ui/modal/SignInModal';
@@ -14,6 +15,8 @@ export const HeaderNav = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [open, setOpen] = useState(false);
+
+  const { data, status } = useSession();
 
   useGSAP(() => {
     if (pathname === '/' && containerRef.current) {
@@ -47,22 +50,47 @@ export const HeaderNav = () => {
               <Link href="">아카이브</Link>
             </div>
           </div>
-          <button
-            className="rounded-[30px] bg-blue-500 px-4 py-[11px] text-[15px] font-semibold text-white transition-colors hover:bg-blue-300"
-            onClick={() => setOpen(true)}
-          >
-            지금 시작하기
-          </button>
+          {status === 'unauthenticated' && !data && (
+            <button
+              className="rounded-[30px] bg-blue-500 px-4 py-[11px] text-[15px] font-semibold text-white transition-colors hover:bg-blue-300"
+              onClick={() => setOpen(true)}
+            >
+              지금 시작하기
+            </button>
+          )}
+          {data && (
+            <div className="flex items-center justify-center gap-2">
+              <div className="overflow-hidden rounded-full">
+                <Image
+                  width={36}
+                  height={36}
+                  src={data.user?.image || '/images/suri-profile.svg'}
+                  alt="프로필 이미지"
+                />
+              </div>
+              <p className="font-semibold text-gray-600">{data.user?.name}</p>
+
+              <Image
+                className="ml-2"
+                width={16}
+                height={24}
+                src="/icons/dropdown.svg"
+                alt="더보기"
+              />
+            </div>
+          )}
           <Modal isOpen={open} onClose={() => setOpen(false)}>
             <SignInModal onClose={() => setOpen(false)} />
           </Modal>
-          <Image
-            className="absolute right-1 top-14 z-50 animate-custom-bounce"
-            width={143}
-            height={44}
-            src="images/header-login-dialog.svg"
-            alt="로그인 아이콘"
-          />
+          {status === 'unauthenticated' && !data && (
+            <Image
+              className="absolute right-1 top-14 z-50 animate-custom-bounce"
+              width={143}
+              height={44}
+              src="images/header-login-dialog.svg"
+              alt="로그인 아이콘"
+            />
+          )}
         </nav>
       </div>
     </div>

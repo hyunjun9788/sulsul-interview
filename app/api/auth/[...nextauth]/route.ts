@@ -1,8 +1,13 @@
-import NextAuth from 'next-auth';
+import NextAuth, { User } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import KakaoProvider from 'next-auth/providers/kakao';
 
-export const authOptions = {
+type ExtendedUser = User & {
+  accessToken: string;
+  refreshToken: string;
+};
+
+export const handler = NextAuth({
   // Configure one or more authentication providers
   providers: [
     KakaoProvider({
@@ -15,19 +20,28 @@ export const authOptions = {
     }), // ...add more providers here
   ],
   callbacks: {
-    async jwt({ token, account }: any) {
-      if (account) {
-        token.accessToken = account.access_token;
+    async jwt({ token, user }) {
+      if (user) {
+        const extendedUser = user as ExtendedUser;
+        return {
+          ...token,
+          accessToken: extendedUser.accessToken,
+          refreshToken: extendedUser.refreshToken,
+        };
       }
+
       return token;
     },
 
-    async session({ session, token }: any) {
-      session.accessToken = token.accessToken;
+    async session({ session, token }) {
+      if (token) {
+        session.accessToken = token.accessToken as string;
+        session.refreshToken = token.refreshToken as string;
+      }
       return session;
     },
   },
-};
+  secret: process.env.AUTH_SECRET,
+});
 
-const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
